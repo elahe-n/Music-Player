@@ -1,3 +1,5 @@
+//The palylist array: songs details and url have been stored in this array 
+
 const playlist = [
     {
     title:'Bohemian Rhapsody',
@@ -121,3 +123,21 @@ const playlist = [
 }
 ]
 
+// Produce HTML code for one song 
+// If given an Object representing the data for one song, connects the object data with an HTML "view" and appends to the #song element
+
+const appendsong= function(item){
+    document.querySelector(".palylist").innerHTML +=
+    `<li class="song">
+                    <img class="img" src="img/${item.pic}" alt="${item.title}">
+                    <h3 class="track"><b>${item.title}</b> - ${item.singer} </h3>
+                    <h5 class="detail">Released: ${item.year}&nbsp;&nbsp;&nbsp; Album: ${item.album} &nbsp;&nbsp;&nbsp; Genre: ${item.genre}</h5>
+                    <img class="heart" src="./img/heart.svg" alt="heart">
+                    <data value="1" class="duration">${item.duration}</data>
+                    <button class="play">▶️</button>
+                </li>`
+
+}
+
+// Produce HTML code for each songs
+playlist.forEach(appendsong)
