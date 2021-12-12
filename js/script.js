@@ -11,7 +11,7 @@ const playlist = [
     lyrics:``,
     pic:`1.jfif`,
     url:'https://cdns-preview-5.dzcdn.net/stream/c-5867c698eeaf9fdde5db302de72e9f36-8.mp3',
-    favorite:false
+    favorite:true
 },
 {
     title:'We Will Rock You',
@@ -59,7 +59,7 @@ const playlist = [
     lyrics:'',
     pic:`5.jfif`,
     url:'https://cdns-preview-c.dzcdn.net/stream/c-c62114bb9ed46619356f9aee5a8d4102-6.mp3',
-    favorite:false
+    favorite:true
 },
 {
     title:'Somebody To Love',
@@ -95,7 +95,7 @@ const playlist = [
     lyrics:'',
     pic:`8.jfif`,
     url:'https://www.naijagreen.com/wp-content/uploads/music/2021/08/Queen_-_Radio_Ga_Ga_[NaijaGreen.Com]_.mp3',
-    favorite:false
+    favorite:true
 },
 {
     title:'Too Much Love Will Kill You',
@@ -107,7 +107,7 @@ const playlist = [
     lyrics:'',
     pic:`9.jfif`,
     url:'https://cdns-preview-2.dzcdn.net/stream/c-23cadb95a9707bb26c7c69b6297c180d-6.mp3',
-    favorite:false
+    favorite:true
 },
 {
     title:`Dont try so hard`,
@@ -132,7 +132,7 @@ const appendsong= function(item){
                     <img class="img" src="img/${item.pic}" alt="${item.title}">
                     <h3 class="track"><b>${item.title}</b> - ${item.singer} </h3>
                     <h5 class="detail">Released: ${item.year}&nbsp;&nbsp;&nbsp; Album: ${item.album} &nbsp;&nbsp;&nbsp; Genre: ${item.genre}</h5>
-                    <img class="heart" src="./img/heart.svg" alt="heart">
+                    <img class="heart" src="${ (item.favorite) ? `./img/filledheart.svg` : `./img/heart.svg` }" alt="heart">
                     <data value="1" class="duration">${item.duration}</data>
                     <button class="play">▶️</button>
                 </li>`
