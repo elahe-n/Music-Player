@@ -9,13 +9,31 @@
     <script src="js/script.js" defer></script>
 </head>
 <body>
-    <main>
-        <article >
-            <ol class="palylist">
-               
-            </ol>
+     <main>
+            <form class="filters" name="filterSongs"  id="filterSongs"> 
+                <h2>Filters</h2>
+                <div class="filter-fields">
 
-        </article>
+                  <fieldset>
+                    <legend hidden>Album</legend>
+                    <label for="album">Album</label>
+                    <input type="search"  name="searchAlbum" id="searchAlbum">
+                    <legend hidden>Title</legend>
+                    <label for="searchTitle">Title</label>
+                    <input type="search" name="searchTitle" id="searchTitle">
+                    <button type="submit">Filter</button>
+                  </fieldset>
+                  
+                </div>
+              </form>
+
+              <section class="results">
+                <h2 class="subheading">results</h2>
+                <article >
+                    <ol id="songs"> </ol>
+                </article>
+              </section>
+       
     </main>
     
 </body>

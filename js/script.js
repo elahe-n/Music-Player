@@ -74,7 +74,7 @@ const playlist = [
     favorite:false
 },
 {
-    ttitle:'Youre My Best Friend',
+    title:'Youre My Best Friend',
     singer:'Freddie Mercury',
     year:'1975',
     duration:'02:50',
@@ -127,7 +127,7 @@ const playlist = [
 // If given an Object representing the data for one song, connects the object data with an HTML "view" and appends to the #song element
 
 const appendsong= function(item){
-    document.querySelector(".palylist").innerHTML +=
+    document.querySelector("#songs").innerHTML +=
     `<li class="song">
                     <img class="img" src="img/${item.pic}" alt="${item.title}">
                     <h3 class="track"><b>${item.title}</b> - ${item.singer} </h3>
@@ -139,5 +139,35 @@ const appendsong= function(item){
 
 }
 
-// Produce HTML code for each songs
-playlist.forEach(appendsong)
+const filterForm=document.querySelector(`#filterSongs`)
+
+//When the form submit
+filterForm.addEventListener(`submit`,function(event){
+    //Stop form from redirectig or refreshing
+    event.preventDefault()
+    //Do the filtering 
+    filterAndPrint()
+})
+
+const filterAndPrint=function(){ 
+    //Get filter values 
+    const albumSearch = filterForm.querySelector(`#searchAlbum`).value || ``
+    const titleSearch = filterForm.querySelector(`#searchTitle`).value || ``
+   
+
+    //Clear out the existing result 
+    document.querySelector(`#songs`).innerHTML=``
+
+    //Filter song title and album name and print for each songs
+   playlist
+        .filter(item => item.album.toUpperCase().includes(albumSearch.toUpperCase()))
+        .filter(item => item.title.toUpperCase().includes(titleSearch.toUpperCase()))
+        .forEach(appendsong)
+}
+
+//When document has loaded
+window.addEventListener(`load`, function(event){
+    filterAndPrint()
+})
+
+
