@@ -238,7 +238,40 @@ window.addEventListener(`load`, function() {
       loadSongFromPlaylistByIndex(playingIndex, true)
     }
 })
+music.addEventListener(`durationchange`, function(event) {
+  trackDuration.textContent = secsToMins(music.duration)
+})
 
+//Going to the next song after finishing the playing song 
+music.addEventListener(`ended`, playNextSong)
+
+//Update the playing song time
+music.addEventListener(`timeupdate`, function(event) {
+  trackTime.textContent = secsToMins(music.currentTime)
+// Don't update while you're dragging
+  if (amDragProgress) return
+  trackProgress.value = music.currentTime / music.duration
+})
+
+let amDragProgress = false
+trackProgress.addEventListener(`input`, function(event) {
+  amDragProgress = true
+})
+trackProgress.addEventListener(`change`, function(event) {
+  amDragProgress = false
+  music.currentTime = trackProgress.value * music.duration
+})
+
+// set song's Volume
+const setVolumeTo = function(vol) {
+  music.volume = vol
+}
+// Change the volume
+trackVolume.addEventListener(`input`, function(event) {
+  setVolumeTo(trackVolume.value)
+})
+// Set it once to start
+setVolumeTo(trackVolume.value)
 
 // Load up the playlist with songs
 loadPlaylistFromArray(playlist)
