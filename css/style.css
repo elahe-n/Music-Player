@@ -8,6 +8,7 @@ body{
     display:flex;
     flex-direction: column;
 }
+
 ul{
     padding:2em 0;
     margin-block-start: 0;
@@ -45,6 +46,7 @@ ul{
     display: flex;
     justify-content: center;
     gap:1em;
+    padding-bottom: 2em;
 }
 
 .playing {
