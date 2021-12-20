@@ -25,7 +25,7 @@ const loadSongFromPlaylistByIndex = function(index = 0, start = false) {
   // Change the song source
   music.src = playlist[playingIndex].url
   // Loading up the rest of the data for this song would go here
-  // Add .loading to the playing song
+  // Add .playing class to the playing song
   $$(`.playing`).forEach(li => li.classList.remove(`playing`))
   $(`[data-index="${playingIndex}"]`).classList.add(`playing`)
   // Play the new track, if we were already playing (you may not even want to bother checking and just play when a playlist song is clicked)
